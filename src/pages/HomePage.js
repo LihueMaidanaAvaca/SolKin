@@ -3,19 +3,19 @@ import dayAndMonthK from '../utils/dayAndMonthK.js';
 import yearK from '../utils/yearK';
 import toKin from '../utils/toKin'
 import Oracle from '../components/Oracle';
-import KinMaya from '../components/KinMaya'; 
+import KinMaya from '../components/KinMaya';
 import SpellWave from '../components/SpellWave';
 
-export default function HomePage({ day, month, year }){
+export default function HomePage({ day, month, year }) {
 
     // Obtener la fecha actual
     const currentDate = new Date();
-    
+
     // Formatear la fecha para mostrarla
     const formattedDate = currentDate.toLocaleDateString('es-ES', {
-        year: 'numeric', 
-        month: 'long', 
-        day: 'numeric' 
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
     });
 
     // Procesar el día y el mes con dayAndMonthK, y el año con yearK
@@ -27,16 +27,18 @@ export default function HomePage({ day, month, year }){
     console.log(kinMaya)
 
     return (
-        <div >
-            <KinMaya kinMaya={kinMaya}/>
-            <h4>
-                KinMaya {kinMaya.kin}: {kinMaya.Umbral}
-            </h4>
-            <Oracle kinMaya={kinMaya}/>
+        < >
+            <section style={{height: "100dvh" }}>
+                <KinMaya kinMaya={kinMaya} />
+                <h4>
+                    KinMaya {kinMaya.kin}: {kinMaya.Umbral}
+                </h4>
+                <Oracle kinMaya={kinMaya} />
+            </section>
             <h5>
                 Onda: {kinMaya.Onda}
             </h5>
-            <SpellWave kinMaya={kinMaya}/>
-        </div>
+            <SpellWave kinMaya={kinMaya} />
+        </>
     );
 }

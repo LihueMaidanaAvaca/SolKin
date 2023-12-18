@@ -20,6 +20,9 @@ export default function Header({ day, month, year, onDateChange }) {
                         <li className="nav-item">
                             <a className="nav-link active" aria-current="page" href="/">Hoy</a>
                         </li>
+                        <li className="nav-item">
+                            <a className="nav-link active" aria-current="page" href="/kins">Mis Kins</a>
+                        </li>
                         {/* Otros elementos de la navbar si los necesitas */}
                     </ul>
                 </div>
