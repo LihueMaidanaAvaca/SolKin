@@ -7,10 +7,10 @@ import UnKinMaya from '../pages/UnKinMaya';
 // import ContactPage from '../pages/ContactPage';
 // ...importa otras páginas según sea necesario
 
-const MainRoutes = () => {
+const MainRoutes = ({ day, month, year }) => {
     return (
         <Routes>
-            <Route path="/" element={<HomePage />} />
+            <Route path="/" element={<HomePage day={day} month={month} year={year} />} />
             <Route path="/unkinmaya" element={<UnKinMaya />} />
             {/* <Route path="/contact" element={<ContactPage />} /> */}
             {/* ...define otras rutas aquí */}

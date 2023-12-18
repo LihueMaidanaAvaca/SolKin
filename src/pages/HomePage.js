@@ -6,7 +6,7 @@ import Oracle from '../components/Oracle';
 import KinMaya from '../components/KinMaya'; 
 import SpellWave from '../components/SpellWave';
 
-export default function HomePage(){
+export default function HomePage({ day, month, year }){
 
     // Obtener la fecha actual
     const currentDate = new Date();
@@ -18,14 +18,9 @@ export default function HomePage(){
         day: 'numeric' 
     });
 
-    // Obtener el día, mes y año actual
-    const currentDay = currentDate.getDate();
-    const currentMonth = currentDate.getMonth() + 1; // getMonth() devuelve un índice basado en cero, por lo que se suma 1.
-    const currentYear = currentDate.getFullYear();
-
     // Procesar el día y el mes con dayAndMonthK, y el año con yearK
-    const processedDayMonth = dayAndMonthK(currentDay, currentMonth);
-    const processedYear = yearK(currentYear);
+    const processedDayMonth = dayAndMonthK(day, month);
+    const processedYear = yearK(year);
 
     const kinMaya = toKin(processedYear, processedDayMonth)
 
