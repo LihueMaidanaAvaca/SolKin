@@ -2,7 +2,7 @@ import React from 'react';
 
 const Oracle = ({ kinMaya }) => {
     return (
-        <div display="flex" flexDirection="column" alignItems="center" justifyContent="center">
+        <div style={{display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center"}}>
             <div>
                 <img src={kinMaya.imgGuia} alt="Sello Maya" style={{ width: '100px', height: 'auto' }} />
             </div>
