@@ -6,7 +6,7 @@ const SpellWave = ({ kinMaya }) => {
 
     return (
         <div
-            style={{ maxWidth: '500px', margin: 'auto' }} // Ajusta el maxWidth según tus necesidades
+            style={{ maxWidth: '500px', margin: '4px' }} // Ajusta el maxWidth según tus necesidades
         >
             <div>
                 <img src={kinMaya.imgWave} alt="Hun" style={{ width: '100px', height: 'auto' }} />

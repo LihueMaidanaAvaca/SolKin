@@ -28,13 +28,10 @@ export default function HomePage({ day, month, year }){
 
     return (
         <div>
-            <h5>
-                Fecha Actual: {formattedDate}
-            </h5>
-            < h4>
-                {kinMaya.Umbral}
-            </h4>
             <KinMaya kinMaya={kinMaya}/>
+            <h4>
+                KinMaya {kinMaya.kin}: {kinMaya.Umbral}
+            </h4>
             <Oracle kinMaya={kinMaya}/>
             <h5>
                 Onda: {kinMaya.Onda}
