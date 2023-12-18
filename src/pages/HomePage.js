@@ -27,7 +27,7 @@ export default function HomePage({ day, month, year }){
     console.log(kinMaya)
 
     return (
-        <div>
+        <div >
             <KinMaya kinMaya={kinMaya}/>
             <h4>
                 KinMaya {kinMaya.kin}: {kinMaya.Umbral}

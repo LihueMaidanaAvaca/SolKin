@@ -17,6 +17,8 @@ export default function DateInput({ day, month, year, onDateChange }) {
         onDateChange(day, month, newYear);
     };
 
+    console.log(year, "anio")
+
     return (
         <div className="input-group" style={{ maxWidth: '220px' }}>
             <input 
