@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import dayAndMonthK from '../utils/dayAndMonthK.js';
 import yearK from '../utils/yearK';
 import toKin from '../utils/toKin'
@@ -26,6 +26,14 @@ export default function HomePage({ day, month, year }) {
 
     console.log(kinMaya)
 
+    // Estado para controlar la visibilidad del Oracle
+    const [showOracle, setShowOracle] = useState(false);
+
+    // Función para cambiar la visibilidad del Oracle
+    const toggleOracleVisibility = () => {
+        setShowOracle(!showOracle);
+    };
+
     return (
         < >
             <section style={{height: "100dvh" }}>
@@ -33,7 +41,10 @@ export default function HomePage({ day, month, year }) {
                 <h4>
                     KinMaya {kinMaya.kin}: {kinMaya.Umbral}
                 </h4>
-                <Oracle kinMaya={kinMaya} />
+                <button onClick={toggleOracleVisibility}>
+                    {showOracle ? 'Ocultar Oracle' : 'Mostrar Oracle'}
+                </button>
+                {showOracle && <Oracle kinMaya={kinMaya} />}
             </section>
             <h5>
                 Onda: {kinMaya.Onda}

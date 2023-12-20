@@ -5,7 +5,7 @@ export default function Header({ day, month, year, onDateChange }) {
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-success">
             <div className="container-fluid">
-                <a className="navbar-brand" href="#">SolKin</a>
+                {/* <a className="navbar-brand" href="#">SolKin</a> */}
                 <DateInput
                     day={day}
                     month={month}
