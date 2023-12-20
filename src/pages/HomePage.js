@@ -42,13 +42,27 @@ export default function HomePage({ day, month, year }) {
     return (
         <div >
             <section style={{ height: "100vh" }}>
-                <div className='card' style={{ backgroundColor: 'rgba(255, 255, 255, 0.5)' }}>
-                    <div className='card-body'>
-                        <KinMaya kinMaya={kinMaya} />
-                        <h4 className='card-tittle'>
-                            KinMaya {kinMaya.kin}: {kinMaya.Umbral}
-                        </h4>
+                <div style={{ backgroundColor: 'rgba(255, 255, 255, 0.5)', borderRadius: '10px', margin: '10px' }}>
+                    <div className='card' style={{ backgroundColor: 'rgba(0, 0, 0, 0)', borderRadius: '10px', margin: '10px', border: "0" }}>
+                        <div className='card-body'>
+                            <KinMaya kinMaya={kinMaya} />
+                            <h4 className='card-tittle'>
+                                KinMaya {kinMaya.kin}: {kinMaya.Umbral}
+                            </h4>
+                        </div>
                     </div>
+                        <details className='ml-3'>
+                            <summary class="font-weight-bold ">
+                                Sello Solar {kinMaya.sello}: {kinMaya.tribu}
+                            </summary>
+                            Aqui va una pequeña explicacion Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                        </details>
+                        <details>
+                            <summary>
+                                Tono Lunar {kinMaya.tono}: {kinMaya.vibracion}
+                            </summary>
+                            Aqui va una pequeña explicacion Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                        </details>
                 </div>
                 <button className='btn btn-success' onClick={toggleOracleVisibility}>
                     {showOracle ? 'Ocultar Oracle' : 'Mostrar Oracle'}
