@@ -20,12 +20,12 @@ function App() {
   console.log(day, "dia")
 
   return (
-    <>
+    <div style={{background: "#41523f"}}>
       <Header day={day} month={month} year={year} onDateChange={updateDate} />
       <Router>
         <MainRoutes day={day} month={month} year={year} />
       </Router>
-    </>
+    </div>
   );
 }
 

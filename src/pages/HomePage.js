@@ -28,28 +28,44 @@ export default function HomePage({ day, month, year }) {
 
     // Estado para controlar la visibilidad del Oracle
     const [showOracle, setShowOracle] = useState(false);
+    const [showWave, setShowWave] = useState(false);
 
     // Función para cambiar la visibilidad del Oracle
     const toggleOracleVisibility = () => {
         setShowOracle(!showOracle);
     };
 
+    const toggleWaveVisibility = () => {
+        setShowWave(!showWave)
+    }
+
     return (
-        < >
-            <section style={{height: "100dvh" }}>
-                <KinMaya kinMaya={kinMaya} />
-                <h4>
-                    KinMaya {kinMaya.kin}: {kinMaya.Umbral}
-                </h4>
-                <button onClick={toggleOracleVisibility}>
+        <div >
+            <section style={{ height: "100vh" }}>
+                <div className='card' style={{ backgroundColor: 'rgba(255, 255, 255, 0.5)' }}>
+                    <div className='card-body'>
+                        <KinMaya kinMaya={kinMaya} />
+                        <h4 className='card-tittle'>
+                            KinMaya {kinMaya.kin}: {kinMaya.Umbral}
+                        </h4>
+                    </div>
+                </div>
+                <button className='btn btn-success' onClick={toggleOracleVisibility}>
                     {showOracle ? 'Ocultar Oracle' : 'Mostrar Oracle'}
                 </button>
+                <button className='btn btn-success' onClick={toggleWaveVisibility}>
+                    {showWave ? 'Ocultar Wave' : 'Mostrar Wave'}
+                </button>
                 {showOracle && <Oracle kinMaya={kinMaya} />}
+                {showWave && <div style={{ backgroundColor: 'rgba(255, 255, 255, 0.5)', borderRadius: '10px', margin: '10px' }}>
+                    <h5 className='card-tittle'>
+                        Onda: {kinMaya.Onda}
+                    </h5>
+                    <SpellWave kinMaya={kinMaya} />
+                </div>
+                }
             </section>
-            <h5>
-                Onda: {kinMaya.Onda}
-            </h5>
-            <SpellWave kinMaya={kinMaya} />
-        </>
+
+        </div>
     );
 }
