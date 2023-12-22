@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import dayAndMonthK from '../utils/dayAndMonthK.js';
 import yearK from '../utils/yearK';
 import toKin from '../utils/toKin'
-import Oracle from '../components/Oracle';
 import KinMaya from '../components/KinMaya';
+import Oracle from '../components/Oracle';
 import SpellWave from '../components/SpellWave';
 
 export default function HomePage({ day, month, year }) {
