@@ -61,7 +61,7 @@ export default function Sinastria() {
     };
     
     return (
-        <div className="d-flex flex-column align-items-center justify-content-center " style={{height: "100dvh"}}>
+        <div className="d-flex flex-column align-items-center justify-content-center " style={{height: "100vh"}}>
             {resultadoKin && (
                 <div className="card mt-2 mb-4" style={{ width: '20rem' }}>
                     <div className="card-body">
