@@ -1,11 +1,12 @@
+import React, { useState } from 'react';
 import dayAndMonthK from '../utils/dayAndMonthK.js';
 import yearK from '../utils/yearK';
 import toKin from '../utils/toKin'
 import KinMaya from '../components/KinMaya';
-import React, { useState } from 'react';
 
 export default function Sinastria() {
     const [fechas, setFechas] = useState([{ id: 1, value: '' }]);
+    const [resultadoKin, setResultadoKin] = useState(null);
 
     const agregarFecha = () => {
         const nuevaFecha = { id: fechas.length + 1, value: '' };
@@ -35,20 +36,54 @@ export default function Sinastria() {
         const year = date.getFullYear();
         const processedDayMonth = dayAndMonthK(day, month);
         const processedYear = yearK(year);
-        return toKin(processedYear, processedDayMonth);
+        const kinMaya = toKin(processedYear, processedDayMonth);
+    
+        return {
+            kinMaya,           // Objeto Kin Maya
+            processedDayMonth, // Valor procesado de día y mes
+            processedYear      // Valor procesado del año
+        };
     };
 
+    const sumarFechasYCalcularKin = () => {
+        let totalDayMonth = 0;
+        let totalYear = 0;
+        fechas.forEach(fecha => {
+            const kinMaya = calcularKinMaya(fecha.value);
+            if (kinMaya) {
+                totalDayMonth += kinMaya.processedDayMonth;
+                totalYear += kinMaya.processedYear;
+            }
+            console.log(fecha.value, "resultado")
+        });
+        const resultado = toKin(totalYear, totalDayMonth);
+        setResultadoKin(resultado);
+    };
+    
     return (
-        <div className="d-flex flex-column align-items-center justify-content-center h-100">
+        <div className="d-flex flex-column align-items-center justify-content-center " style={{height: "100dvh"}}>
+            {resultadoKin && (
+                <div className="card mt-2 mb-4" style={{ width: '20rem' }}>
+                    <div className="card-body">
+                        <h5 className="card-title">Kin Resultante</h5>
+                        <KinMaya kinMaya={resultadoKin} />
+                        <label>
+                                Kin: {resultadoKin ? resultadoKin.kin : 'No seleccionada'}<br></br>
+                                {resultadoKin ? resultadoKin.Umbral : 'No seleccionada'}
+                            </label>
+                    </div>
+                </div>
+            )}
             {fechas.map((fecha) => {
                 const kinMaya = calcularKinMaya(fecha.value);
                 return (
                     <div key={fecha.id} className="card mb-2" style={{ width: '18rem' }}>
                         <div className="card-body">
                             <label>
-                                Fecha Elegida: {fecha.value ? fecha.value : 'No seleccionada'}
+                                Kin: {fecha.value ? kinMaya.kinMaya.kin : 'No seleccionada'}<br></br>
+                                {fecha.value ? kinMaya.kinMaya.Umbral : 'No seleccionada'}
                             </label>
-                            {kinMaya && <KinMaya kinMaya={kinMaya} />}
+                            {kinMaya && <KinMaya kinMaya={kinMaya.kinMaya} />}
                             <input
                                 type="date"
                                 className="form-control"
@@ -67,6 +102,9 @@ export default function Sinastria() {
             })}
             <button className="btn btn-primary mt-2" onClick={agregarFecha}>
                 Agregar Fecha
+            </button>
+            <button className="btn btn-secondary mt-2" onClick={sumarFechasYCalcularKin}>
+                Calcular Kin Resultante
             </button>
         </div>
     );
