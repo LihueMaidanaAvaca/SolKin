@@ -54,14 +54,16 @@ export default function Sinastria() {
                 totalDayMonth += kinMaya.processedDayMonth;
                 totalYear += kinMaya.processedYear;
             }
-            console.log(fecha.value, "resultado")
         });
         const resultado = toKin(totalYear, totalDayMonth);
+        console.log(resultado.kin, "resultado")
         setResultadoKin(resultado);
     };
     
     return (
-        <div className="d-flex flex-column align-items-center justify-content-center " style={{height: "100vh"}}>
+        <div className="container mt-4 d-flex flex-column align-items-center justify-content-center " style={{height: "100vh"}}>
+            <div>
+
             {resultadoKin && (
                 <div className="card mt-2 mb-4" style={{ width: '20rem' }}>
                     <div className="card-body">
@@ -74,7 +76,8 @@ export default function Sinastria() {
                     </div>
                 </div>
             )}
-            {fechas.map((fecha) => {
+            </div>
+            {!resultadoKin && fechas.map((fecha) => {
                 const kinMaya = calcularKinMaya(fecha.value);
                 return (
                     <div key={fecha.id} className="card mb-2" style={{ width: '18rem' }}>
